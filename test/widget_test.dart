@@ -11,11 +11,17 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:brain_jogging_flutter/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+  testWidgets('smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(App());
 
     expect(find.text('Home'), findsOneWidget);
+
+    await tester.tap(find.text('Headcalculation'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Headcalculation'), findsOneWidget);
+    expect(find.text('Home'), findsNothing);
 
     // Verify that our counter starts at 0.
     //expect(find.text('0'), findsOneWidget);
