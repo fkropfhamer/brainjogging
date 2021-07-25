@@ -28,13 +28,17 @@ class _HeadcalculationState extends State<Headcalculation> {
   }
 
   void checkInput() {
-    if (int.parse(_inputController.text) == _rightResult) {
-      generateTask();
-      setState(() {
-        _score = _score + 1;
-      });
+    try {
+      if (int.parse(_inputController.text) == _rightResult) {
+        generateTask();
+        setState(() {
+          _score = _score + 1;
+        });
+      }
+    } finally {
+      _inputController.clear();
     }
-    _inputController.clear();
+    
   }
 
   @override
@@ -42,11 +46,19 @@ class _HeadcalculationState extends State<Headcalculation> {
     return Scaffold(
       appBar: AppBar( title: const Text("Headcalculation"),),
       body: ListView( children: [
-        ListTile(title: Text(_task),),
-        TextField(
-          keyboardType: TextInputType.number,
-          onSubmitted: (value) => checkInput(),
-          controller: _inputController,
+        ListTile(
+          title: Text(_task),
+        ),
+        ListTile(
+          title: TextField(
+            keyboardType: TextInputType.number,
+            onSubmitted: (value) => checkInput(),
+            controller: _inputController,
+          ),
+          trailing: ElevatedButton(
+            onPressed: () => checkInput(),
+            child: const Icon(Icons.arrow_forward_rounded),
+          ),
         ),
         ListTile(title: Text('Score: $_score'),)
       ],),
