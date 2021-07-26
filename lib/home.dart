@@ -10,7 +10,8 @@ class Home extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          ListTile(title: const Text("Headcalculation"), onTap: () => Navigator.of(context).pushNamed('/headcalculation'),)
+          ListTile(title: const Text("Headcalculation"), onTap: () => Navigator.of(context).pushNamed('/headcalculation'),),
+          ListTile(title: const Text("Stroop"), onTap: () => Navigator.of(context).pushNamed('/stroop'),)
         ],
       )
     );
