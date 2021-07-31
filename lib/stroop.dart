@@ -9,15 +9,15 @@ class Stroop extends StatefulWidget {
   _StroopState createState() => _StroopState();
 } 
 
-const colors = {
-  'Red': Colors.red,
+var colors = {
+  'Red': Colors.red.shade700,
   'Green': Colors.green,
   'Blue': Colors.blue,
   'Yellow': Colors.yellow,
-  'Purple': Colors.purple,
+  'Purple': Colors.deepPurple,
   'Orange': Colors.orange,
   'Brown': Colors.brown,
-  'Pink': Colors.pink,
+  'Pink': Colors.pink.shade300,
   'Black': Colors.black,
 };
 
@@ -31,33 +31,32 @@ class _StroopState extends State<Stroop> {
   var _colors = colors.values.toList();
 
   _StroopState() {
-    generateTask();
+    _generateTask();
   }
 
-  generateTask() {
-    generateColor();
+  _generateTask() {
+    _generateColor();
     _colorTexts.shuffle();
     _colors.shuffle();
   }
 
-  generateColor() {
+  _generateColor() {
     _colorText = colors.keys.elementAt(_random.nextInt(colors.length));
     _color = colors.values.elementAt(_random.nextInt(colors.length));
   }
   
-  checkResult(String color) {
+  _checkResult(String color) {
     var inputColor = colors[color];
 
     if (inputColor == _color) {
       _score++;
-      generateTask();
+      _generateTask();
     } else {
       _score--;
     }
 
     setState(() {});
   }
-  // color -> text
 
   Widget _generateButtonRow(int index) {
     List<Widget> buttons = [];
@@ -66,7 +65,7 @@ class _StroopState extends State<Stroop> {
       var totalIndex = index*3 + i;
       var colorText = _colorTexts[totalIndex];
 
-      var button = ElevatedButton(child: Text(colorText), onPressed: () => { checkResult(colorText)}, style: ElevatedButton.styleFrom(primary: _colors[totalIndex]),);
+      var button = ElevatedButton(child: Text(colorText), onPressed: () => { _checkResult(colorText)}, style: ElevatedButton.styleFrom(primary: _colors[totalIndex]),);
       buttons.add(button);
     }
 

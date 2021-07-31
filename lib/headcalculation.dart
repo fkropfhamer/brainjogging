@@ -11,7 +11,7 @@ class Headcalculation extends StatefulWidget {
 
 class _HeadcalculationState extends State<Headcalculation> {
   _HeadcalculationState() {
-    generateTask();
+    _generateTask();
   }
 
   var _task;
@@ -22,7 +22,7 @@ class _HeadcalculationState extends State<Headcalculation> {
   var _wasFalse = false;
   var _wasRight = false;
 
-  void generateTask() {
+  void _generateTask() {
     var a = _random.nextInt(100);
     var b = _random.nextInt(100);
 
@@ -30,7 +30,7 @@ class _HeadcalculationState extends State<Headcalculation> {
     _rightResult = a + b;
   }
 
-  void showFalse() {
+  void _showFalse() {
     setState(() {
       _wasFalse = true;
       Timer(new Duration(seconds: 1), () { setState(() {
@@ -39,7 +39,7 @@ class _HeadcalculationState extends State<Headcalculation> {
     });
   }
 
-  void showRight() {
+  void _showRight() {
     setState(() {
       _wasRight = true;
       Timer(new Duration(seconds: 1), () { setState(() {
@@ -48,7 +48,7 @@ class _HeadcalculationState extends State<Headcalculation> {
     });
   }
 
-  MaterialColor getColor() {
+  MaterialColor _getColor() {
     if (_wasRight) {
       return Colors.green;
     }
@@ -60,19 +60,19 @@ class _HeadcalculationState extends State<Headcalculation> {
     return Colors.blue;
   }
 
-  void checkInput() {
+  void _checkInput() {
     try {
       if (int.parse(_inputController.text) == _rightResult) {
-        showRight();
-        generateTask();
+        _showRight();
+        _generateTask();
         setState(() {
           _score = _score + 1;
         });
       } else {
-        showFalse();
+        _showFalse();
       }
     } catch(_) {
-      showFalse();
+      _showFalse();
     } finally {
       _inputController.clear();
     }
@@ -93,13 +93,13 @@ class _HeadcalculationState extends State<Headcalculation> {
         ListTile(
           title: TextField(
             keyboardType: TextInputType.number,
-            onSubmitted: (value) => checkInput(),
+            onSubmitted: (value) => _checkInput(),
             controller: _inputController,
           ),
           trailing: ElevatedButton(
-            onPressed: () => checkInput(),
+            onPressed: () => _checkInput(),
             child: const Icon(Icons.arrow_forward_rounded),
-            style: ElevatedButton.styleFrom(primary: getColor()),
+            style: ElevatedButton.styleFrom(primary: _getColor()),
           ),
         ),
         ListTile(title: Text('Score: $_score'),)
