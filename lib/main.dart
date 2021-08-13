@@ -1,5 +1,6 @@
 import 'package:brain_jogging_flutter/headcalculation.dart';
 import 'package:brain_jogging_flutter/home.dart';
+import 'package:brain_jogging_flutter/rememeber.dart';
 import 'package:brain_jogging_flutter/stroop.dart';
 import 'package:flutter/material.dart';
 
@@ -28,7 +29,8 @@ class App extends StatelessWidget {
       home: Home(),
       routes: <String, WidgetBuilder>{
         '/headcalculation': (BuildContext context) => Headcalculation(),
-        '/stroop' : (BuildContext context) => Stroop()
+        '/stroop': (BuildContext context) => Stroop(),
+        '/remember': (BuildContext context) => Remember(),
       },
     );
   }
