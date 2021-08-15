@@ -29,15 +29,21 @@ List<int> _generateSequence() {
 
 class _RememberState extends State<Remember> {
   var _visible = false;
-  var _running = false;
+  var _isRunning = false;
   var _number = 0;
+  var _inputController = TextEditingController();
+  var _score = 0;
+  var _seqString = "";
+  var _isWaitingForInput = false;
 
   _start() async {
-    if (_running) {
+    if (_isRunning) {
       return;
     }
-    _running = true;
+    _isRunning = true;
     var seq = _generateSequence();
+    _seqString = seq.fold<String>("", (previousValue, element) => previousValue + element.toString());
+    print(_seqString);
 
     print(seq);
   
@@ -52,9 +58,25 @@ class _RememberState extends State<Remember> {
       });
       await Future.delayed(pauseDuration);
     }
-    _running = false;
+    setState(() {
+      _isRunning = false;
+      _isWaitingForInput = true;
+    });
   }
 
+  _onSubmit() {
+    print(_inputController.text);
+    var input = _inputController.text;
+    if (input == _seqString) {
+      _score++;
+    } else {
+      _score--;
+    }
+    _inputController.clear();
+    setState(() {
+      _isWaitingForInput = false;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,10 +89,18 @@ class _RememberState extends State<Remember> {
             opacity: _visible ? 1.0 : 0.0,
            child: Center(child: Text(_number.toString() , style: TextStyle(fontSize: 30),),),
           ),
+          if (!_isRunning && !_isWaitingForInput) 
           ElevatedButton(
             onPressed: () => { _start() },
             child: const Text('Start'),
-          )
+          ),
+          if (_isWaitingForInput) 
+          TextField(
+            keyboardType: TextInputType.number,
+            onSubmitted: (value) => _onSubmit(),
+            controller: _inputController,
+          ),
+          Center(child: Text("Score: $_score", style: TextStyle(fontSize: 30))),
         ],
       ),
     );
