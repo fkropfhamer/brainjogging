@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?> <!-- Created with Vectornator for iOS (http://vectornator.io/) --><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg height="100%" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="100%" xmlns:vectornator="http://vectornator.io" version="1.1" viewBox="0 0 512 512">
+<metadata>
+<vectornator:setting key="DimensionsVisible" value="1"/>
+<vectornator:setting key="PencilOnly" value="0"/>
+<vectornator:setting key="SnapToPoints" value="0"/>
+<vectornator:setting key="OutlineMode" value="0"/>
+<vectornator:setting key="CMYKEnabledKey" value="0"/>
+<vectornator:setting key="RulersVisible" value="1"/>
+<vectornator:setting key="SnapToEdges" value="0"/>
+<vectornator:setting key="GuidesVisible" value="1"/>
+<vectornator:setting key="DisplayWhiteBackground" value="0"/>
+<vectornator:setting key="doHistoryDisabled" value="0"/>
+<vectornator:setting key="SnapToGuides" value="1"/>
+<vectornator:setting key="TimeLapseWatermarkDisabled" value="0"/>
+<vectornator:setting key="Units" value="Points"/>
+<vectornator:setting key="DynamicGuides" value="0"/>
+<vectornator:setting key="IsolateActiveLayer" value="0"/>
+<vectornator:setting key="SnapToGrid" value="0"/>
+</metadata>
+<defs/>
+<g id="Ebene 1" vectornator:layerName="Ebene 1">
+<path stroke="#191346" stroke-width="16.2963" d="M271.531+377.87C259.568+403.037+236.363+420.544+209.036+421.683C179.381+422.92+152.957+404.545+139.76+376.887C112.005+374.407+87.5303+358.724+76.9728+333.494C65.5153+306.113+73.5721+274.952+94.9271+252.973C74.7973+233.704+65.4743+206.172+72.9836+179.873C81.1328+151.332+106.884+132.025+137.289+128.193C142.379+100.796+160.304+77.9124+186.418+69.7852C214.759+60.9652+245.019+71.9293+264.883+95.2647C284.207+75.1883+311.766+65.9416+338.044+73.5235C366.562+81.7517+385.798+107.556+389.545+137.971C417.347+139.857+442.152+155.012+453.247+180.011C465.288+207.14+457.9+238.466+437.02+260.897C457.316+279.991+466.876+307.442+459.595+333.805C451.692+362.415+426.109+381.944+395.738+386.038C378.969+408.294+352.723+420.788+325.724+416.422C296.423+411.685+274.223+388.381+266.844+358.638" fill="#ffef58" stroke-linecap="round" opacity="1" stroke-linejoin="round"/>
+</g>
+</svg>

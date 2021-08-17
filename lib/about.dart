@@ -12,7 +12,7 @@ class About extends StatelessWidget {
         children: [
           Center(child: RichText(
               text: TextSpan(
-                text: "Open Source App created with Flutter. Check out the repository at https://github.com/fkropfhamer/brain_jogging_flutter",
+                text: "Open Source App created with Flutter.",
                 style: TextStyle(
                   //color: Colors.pink,
                   fontSize: 55,
