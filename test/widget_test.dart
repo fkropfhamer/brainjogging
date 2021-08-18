@@ -8,7 +8,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:brain_jogging_flutter/main.dart';
+import 'package:brain_jogging/main.dart';
 
 void main() {
   testWidgets('smoke test', (WidgetTester tester) async {

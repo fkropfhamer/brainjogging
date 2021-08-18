@@ -1,5 +1,5 @@
-name: brain_jogging_flutter
-description: A new Flutter project.
+name: brain_jogging
+description: An application to train your brain.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
