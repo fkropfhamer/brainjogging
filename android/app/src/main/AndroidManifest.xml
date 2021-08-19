@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.brain_jogging_flutter">
+    package="com.dinokatze.brain_jogging">
    <application
-        android:label="brain_jogging_flutter"
+        android:label="brain_jogging"
         android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
