@@ -1,4 +1,4 @@
-package com.example.brain_jogging_flutter
+package com.dinokatze.brainjogging
 
 import io.flutter.embedding.android.FlutterActivity
 

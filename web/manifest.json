@@ -1,6 +1,6 @@
 {
-    "name": "brain_jogging_flutter",
-    "short_name": "brain_jogging_flutter",
+    "name": "brainjogging",
+    "short_name": "brainjogging",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

@@ -1,8 +1,8 @@
-import 'package:brain_jogging/about.dart';
-import 'package:brain_jogging/headcalculation.dart';
-import 'package:brain_jogging/home.dart';
-import 'package:brain_jogging/rememeber.dart';
-import 'package:brain_jogging/stroop.dart';
+import 'package:brainjogging/about.dart';
+import 'package:brainjogging/headcalculation.dart';
+import 'package:brainjogging/home.dart';
+import 'package:brainjogging/rememeber.dart';
+import 'package:brainjogging/stroop.dart';
 import 'package:flutter/material.dart';
 
 void main() {

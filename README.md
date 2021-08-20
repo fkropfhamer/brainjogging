@@ -1,4 +1,4 @@
-# brain_jogging_flutter
+# brainjogging
 
 A new Flutter project.
 
