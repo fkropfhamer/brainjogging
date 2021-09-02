@@ -1,4 +1,4 @@
-package com.dinokatze.brainjogging
+package de.telefongarten.brainjogging
 
 import io.flutter.embedding.android.FlutterActivity
 
