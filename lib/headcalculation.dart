@@ -11,6 +11,7 @@ class Headcalculation extends StatefulWidget {
 
 var random = Random();
 
+// min inclusive, max exclusive
 int randomInt(int min, int max) {
   return min + random.nextInt(max - min);
 }
@@ -28,11 +29,61 @@ class _HeadcalculationState extends State<Headcalculation> {
   var _wasRight = false;
 
   void _generateTask() {
+    var type = random.nextInt(4);
+    switch (type) {
+      case 0:  
+        _generateAdditionTask();
+        break;
+      case 1:
+        _generateSubtractionTask();
+        break;
+      case 2:
+        _generateMultiplicationTask();
+        break;
+      case 3:
+        _generateDivisionTask();
+        break;
+    }    
+  }
+
+  void _generateAdditionTask() {
     var a = randomInt(1, 100);
     var b = randomInt(1, 100);
 
     _task = '$a + $b = ?';
-    _rightResult = a + b;
+    _rightResult = a + b;  
+  }
+
+  void _generateSubtractionTask() {
+    var a = randomInt(1, 100);
+    var b = randomInt(1, 100);
+
+    if (b > a) {
+      var tmp = a;
+      a = b;
+      b = tmp;
+    }
+
+    _task = '$a - $b = ?';
+    _rightResult = a - b;  
+  }
+
+  void _generateMultiplicationTask() {
+    var a = randomInt(2, 13);
+    var b = randomInt(2, 13);
+
+    _task = '$a * $b = ?';
+    _rightResult = a * b;  
+  }
+
+  void _generateDivisionTask() {
+    var a = randomInt(2, 13);
+    var b = randomInt(2, 13);
+
+    var result = a * b; 
+
+    _task = '$result / $a = ?';
+    _rightResult = b;  
   }
 
   void _showFalse() {
