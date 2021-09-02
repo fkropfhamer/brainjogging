@@ -9,6 +9,12 @@ class Headcalculation extends StatefulWidget {
   _HeadcalculationState createState() => _HeadcalculationState();
 }
 
+var random = Random();
+
+int randomInt(int min, int max) {
+  return min + random.nextInt(max - min);
+}
+
 class _HeadcalculationState extends State<Headcalculation> {
   _HeadcalculationState() {
     _generateTask();
@@ -16,15 +22,14 @@ class _HeadcalculationState extends State<Headcalculation> {
 
   var _task;
   var _score = 0;
-  var _random = new Random();
   var _rightResult;
   var _inputController = TextEditingController();
   var _wasFalse = false;
   var _wasRight = false;
 
   void _generateTask() {
-    var a = _random.nextInt(100);
-    var b = _random.nextInt(100);
+    var a = randomInt(1, 100);
+    var b = randomInt(1, 100);
 
     _task = '$a + $b = ?';
     _rightResult = a + b;
