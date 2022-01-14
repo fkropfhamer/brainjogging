@@ -105,7 +105,7 @@ jobs:
       if: matrix.target == 'Android'
       uses: actions/setup-java@v1
       with:
-        java-version: '16.x'
+        java-version: '15.x'
     - name: Enable desktop support
       if: matrix.target != 'Android'
       run: |
