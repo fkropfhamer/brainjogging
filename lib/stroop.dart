@@ -78,7 +78,7 @@ class _StroopState extends State<Stroop> {
       appBar: AppBar(title: const Text("Stroop"),),
       body: Column(
        children: [
-          Center( child: Text(_colorText, style: TextStyle(fontSize: 30, color: _color )) ),
+          Center( child: Text(_colorText, style: TextStyle(fontSize: 100, color: _color )) ),
           _generateButtonRow(0),
           _generateButtonRow(1),
           _generateButtonRow(2),

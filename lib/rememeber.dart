@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
 
@@ -35,6 +36,8 @@ class _RememberState extends State<Remember> {
   var _score = 0;
   var _seqString = "";
   var _isWaitingForInput = false;
+  var _wasFalse = false;
+  var _wasRight = false;
 
   _start() async {
     if (_isRunning) {
@@ -68,14 +71,46 @@ class _RememberState extends State<Remember> {
     print(_inputController.text);
     var input = _inputController.text;
     if (input == _seqString) {
+      _showRight();
       _score++;
     } else {
+      _showFalse();
       _score--;
     }
     _inputController.clear();
     setState(() {
       _isWaitingForInput = false;
     });
+  }
+
+  void _showFalse() {
+    setState(() {
+      _wasFalse = true;
+      Timer(new Duration(seconds: 1), () { setState(() {
+        _wasFalse = false;
+      });});
+    });
+  }
+
+  void _showRight() {
+    setState(() {
+      _wasRight = true;
+      Timer(new Duration(seconds: 1), () { setState(() {
+        _wasRight = false;
+      });});
+    });
+  }
+
+  MaterialColor _getColor() {
+    if (_wasRight) {
+      return Colors.green;
+    }
+
+    if (_wasFalse) {
+      return Colors.red;
+    }
+
+    return Colors.blue;
   }
 
   @override
@@ -87,18 +122,25 @@ class _RememberState extends State<Remember> {
           AnimatedOpacity(
             duration: const Duration(milliseconds: fadeDurationMs),
             opacity: _visible ? 1.0 : 0.0,
-           child: Center(child: Text(_number.toString() , style: TextStyle(fontSize: 30),),),
+           child: Center(child: Text(_number.toString() , style: TextStyle(fontSize: 100),),),
           ),
           if (!_isRunning && !_isWaitingForInput) 
           ElevatedButton(
             onPressed: () => { _start() },
             child: const Text('Start'),
           ),
-          if (_isWaitingForInput) 
-          TextField(
-            keyboardType: TextInputType.number,
-            onSubmitted: (value) => _onSubmit(),
-            controller: _inputController,
+          if (_isWaitingForInput)
+          ListTile(
+            title: TextField(
+              keyboardType: TextInputType.number,
+              onSubmitted: (value) => _onSubmit(),
+              controller: _inputController,
+            ),
+            trailing: ElevatedButton(
+              onPressed: () => _onSubmit(),
+              child: const Icon(Icons.arrow_forward_rounded),
+              style: ElevatedButton.styleFrom(primary: _getColor()),
+            ),
           ),
           Center(child: Text("Score: $_score", style: TextStyle(fontSize: 30))),
         ],
