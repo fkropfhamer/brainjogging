@@ -49,7 +49,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: ${{ github.ref }}
-        release_name: Flutter Gallery ${{ github.ref }}
+        release_name: Brainjogging ${{ github.ref }}
         body_path: CHANGELOG.md
         draft: true
         prerelease: false
@@ -62,24 +62,24 @@ jobs:
       matrix:
         target:  [Android] # [macOS, Windows, Linux, Android]
         include:
-        - os: macos-10.15 # Catalina
-          target: macOS
-          build_target: macos
-          build_path: build/macos/Build/Products/Release
-          asset_extension: .zip
-          asset_content_type: application/zip
-        - os: windows-2019
-          target: Windows
-          build_target: windows
-          build_path: build\windows\runner\Release
-          asset_extension: .zip
-          asset_content_type: application/zip
-        - os: ubuntu-20.04
-          target: Linux
-          build_target: linux
-          build_path: build/linux/x64/release/bundle
-          asset_extension: .tar.gz
-          asset_content_type: application/gzip
+        #- os: macos-10.15 # Catalina
+        #  target: macOS
+        #  build_target: macos
+        #  build_path: build/macos/Build/Products/Release
+        #  asset_extension: .zip
+        #  asset_content_type: application/zip
+        #- os: windows-2019
+        #  target: Windows
+        #  build_target: windows
+        #  build_path: build\windows\runner\Release
+        #  asset_extension: .zip
+        #  asset_content_type: application/zip
+        #- os: ubuntu-20.04
+        #  target: Linux
+        #  build_target: linux
+        #  build_path: build/linux/x64/release/bundle
+        #  asset_extension: .tar.gz
+        #  asset_content_type: application/gzip
         - os: ubuntu-20.04
           target: Android
           build_target: apk
@@ -105,7 +105,7 @@ jobs:
       if: matrix.target == 'Android'
       uses: actions/setup-java@v1
       with:
-        java-version: '12.x'
+        java-version: '16.x'
     - name: Enable desktop support
       if: matrix.target != 'Android'
       run: |
