@@ -21,3 +21,7 @@ samples, guidance on mobile development, and a full API reference.
 https://docs.flutter.dev/deployment/android
 - create android/key.properties
 - flutter build appbundle
+
+### Fastlane metadata
+- for f-droid the meta data hast to be in fastlane/metadata
+- cp -rf android/fastlane/metadata fastlane
