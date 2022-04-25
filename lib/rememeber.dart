@@ -10,10 +10,10 @@ class Remember extends StatefulWidget {
 }
 
 const fadeDurationMs = 500;
-const visibileDurationMs = 200;
+const visibleDurationMs = 200;
 const pauseDurationMs = 100;
 const fadeDuration = const Duration(milliseconds: fadeDurationMs);
-const visibileDuration = const Duration(milliseconds: fadeDurationMs + visibileDurationMs);
+const visibleDuration = const Duration(milliseconds: fadeDurationMs + visibleDurationMs);
 const pauseDuration = const Duration(milliseconds: fadeDurationMs + pauseDurationMs);
 
 var random = Random();
@@ -55,7 +55,7 @@ class _RememberState extends State<Remember> {
         _visible = true;
         _number = seq[i];
       });
-      await Future.delayed(visibileDuration);
+      await Future.delayed(visibleDuration);
       setState(() {
         _visible = false;
       });
