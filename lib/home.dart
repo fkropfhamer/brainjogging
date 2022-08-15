@@ -1,4 +1,5 @@
 import 'package:brainjogging/main.dart';
+import 'package:brainjogging/settings.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatelessWidget {
@@ -7,7 +8,12 @@ class Home extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: const Text("Home"),
-          actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.settings))],
+          actions: [
+            IconButton(
+                onPressed: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Settings())),
+                icon: const Icon(Icons.settings))
+          ],
         ),
         body: Column(
           children: [
