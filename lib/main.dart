@@ -1,12 +1,11 @@
-import 'package:brainjogging/about.dart';
-import 'package:brainjogging/challenge.dart';
-import 'package:brainjogging/headcalculation.dart';
-import 'package:brainjogging/home.dart';
-import 'package:brainjogging/random_challenge.dart';
-import 'package:brainjogging/rememeber.dart';
-import 'package:brainjogging/stroop.dart';
-import 'package:brainjogging/time_training.dart';
-import 'package:brainjogging/training.dart';
+import 'package:brainjogging/screens/challenge.dart';
+import 'package:brainjogging/games/headcalculation.dart';
+import 'package:brainjogging/screens/home.dart';
+import 'package:brainjogging/screens/random_challenge.dart';
+import 'package:brainjogging/games/rememeber.dart';
+import 'package:brainjogging/games/stroop.dart';
+import 'package:brainjogging/screens/time_training.dart';
+import 'package:brainjogging/screens/training.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -40,7 +39,6 @@ class App extends StatelessWidget {
         TIME_TRAINING_ROUTE_NAME: (BuildContext context) => TimeTraining(),
         RANDOM_CHALLENGE_ROUTE_NAME: (BuildContext context) => RandomChallenge(),
         CHALLENGE_ROUTE_NAME: (BuildContext context) => Challenge(),
-        '/about': (BuildContext context) =>  About(),
       },
     );
   }
