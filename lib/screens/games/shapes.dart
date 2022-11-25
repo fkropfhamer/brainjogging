@@ -9,7 +9,12 @@ class Shapes extends StatefulWidget {
 }
 
 class _ShapesState extends State<Shapes> {
-  var shapes = [Circle(50, 50, Colors.black), Rectangle(100, 100, Colors.greenAccent), Rectangle(100,  50, Colors.lightBlueAccent), Circle(200, 0, Colors.deepOrange)];
+  var shapes = [
+    Circle(50, 50, Colors.black),
+    Rectangle(100, 100, Colors.greenAccent),
+    Rectangle(100, 50, Colors.lightBlueAccent),
+    Circle(200, 0, Colors.deepOrange)
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +25,13 @@ class _ShapesState extends State<Shapes> {
           child: CustomPaint(
             size: Size(500, 500),
             painter: ShapesPainter(shapes),
-            child: ElevatedButton(onPressed: () { setState(() {
-              this.shapes = [Circle(0, 0, Colors.green)];
-            }); }, child: const Text("test")),
+            child: ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    this.shapes = [Circle(0, 0, Colors.green)];
+                  });
+                },
+                child: const Text("test")),
           ),
         ),
       ),
@@ -62,9 +71,7 @@ class Rectangle extends Shape {
   void draw(Canvas canvas) {
     canvas.drawRect(Rect.fromLTWH(x, y, 50, 50), paint);
   }
-
 }
-
 
 class ShapesPainter extends CustomPainter {
   final List<Shape> shapes;
@@ -73,13 +80,13 @@ class ShapesPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    shapes.forEach((shape) { shape.draw(canvas); });
+    shapes.forEach((shape) {
+      shape.draw(canvas);
+    });
   }
 
   @override
   bool shouldRepaint(covariant ShapesPainter oldDelegate) {
     return listEquals(shapes, oldDelegate.shapes);
   }
-
 }
-

@@ -7,7 +7,6 @@ class RandomChallenge extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: const Text("Random Challenge")),
-        body: const Text("TODO")
-    );
+        body: const Text("TODO"));
   }
 }

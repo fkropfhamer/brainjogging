@@ -37,7 +37,8 @@ class App extends StatelessWidget {
         STROOP_ROUTE_NAME: (BuildContext context) => Stroop(),
         REMEMBER_ROUTE_NAME: (BuildContext context) => Remember(),
         TIME_TRAINING_ROUTE_NAME: (BuildContext context) => TimeTraining(),
-        RANDOM_CHALLENGE_ROUTE_NAME: (BuildContext context) => RandomChallenge(),
+        RANDOM_CHALLENGE_ROUTE_NAME: (BuildContext context) =>
+            RandomChallenge(),
         CHALLENGE_ROUTE_NAME: (BuildContext context) => Challenge(),
       },
     );

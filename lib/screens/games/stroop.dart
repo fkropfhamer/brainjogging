@@ -3,11 +3,11 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class Stroop extends StatefulWidget {
-  const Stroop({ Key? key }) : super(key: key);
+  const Stroop({Key? key}) : super(key: key);
 
   @override
   _StroopState createState() => _StroopState();
-} 
+}
 
 var colors = {
   'Red': Colors.red.shade700,
@@ -44,7 +44,7 @@ class _StroopState extends State<Stroop> {
     _colorText = colors.keys.elementAt(_random.nextInt(colors.length));
     _color = colors.values.elementAt(_random.nextInt(colors.length));
   }
-  
+
   _checkResult(String color) {
     var inputColor = colors[color];
 
@@ -62,27 +62,38 @@ class _StroopState extends State<Stroop> {
     List<Widget> buttons = [];
 
     for (var i = 0; i < 3; i++) {
-      var totalIndex = index*3 + i;
+      var totalIndex = index * 3 + i;
       var colorText = _colorTexts[totalIndex];
 
-      var button = ElevatedButton(child: Text(colorText), onPressed: () => { _checkResult(colorText)}, style: ElevatedButton.styleFrom(primary: _colors[totalIndex]),);
+      var button = ElevatedButton(
+        child: Text(colorText),
+        onPressed: () => {_checkResult(colorText)},
+        style: ElevatedButton.styleFrom(primary: _colors[totalIndex]),
+      );
       buttons.add(button);
     }
 
-    return Row(children: buttons, mainAxisAlignment: MainAxisAlignment.spaceAround);
+    return Row(
+        children: buttons, mainAxisAlignment: MainAxisAlignment.spaceAround);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Stroop"),),
+      appBar: AppBar(
+        title: const Text("Stroop"),
+      ),
       body: Column(
-       children: [
-          Center( child: Text(_colorText, style: TextStyle(fontSize: 100, color: _color )) ),
+        children: [
+          Center(
+              child: Text(_colorText,
+                  style: TextStyle(fontSize: 100, color: _color))),
           _generateButtonRow(0),
           _generateButtonRow(1),
           _generateButtonRow(2),
-          Center( child: Text('Score: $_score', style: const TextStyle(fontSize: 30)) ),
+          Center(
+              child:
+                  Text('Score: $_score', style: const TextStyle(fontSize: 30))),
         ],
       ),
     );

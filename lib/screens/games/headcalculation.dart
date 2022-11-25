@@ -4,7 +4,6 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class Headcalculation extends StatefulWidget {
-
   @override
   _HeadcalculationState createState() => _HeadcalculationState();
 }
@@ -31,7 +30,7 @@ class _HeadcalculationState extends State<Headcalculation> {
   void _generateTask() {
     var type = random.nextInt(4);
     switch (type) {
-      case 0:  
+      case 0:
         _generateAdditionTask();
         break;
       case 1:
@@ -43,7 +42,7 @@ class _HeadcalculationState extends State<Headcalculation> {
       case 3:
         _generateDivisionTask();
         break;
-    }    
+    }
   }
 
   void _generateAdditionTask() {
@@ -51,7 +50,7 @@ class _HeadcalculationState extends State<Headcalculation> {
     var b = randomInt(1, 100);
 
     _task = '$a + $b = ?';
-    _rightResult = a + b;  
+    _rightResult = a + b;
   }
 
   void _generateSubtractionTask() {
@@ -65,7 +64,7 @@ class _HeadcalculationState extends State<Headcalculation> {
     }
 
     _task = '$a - $b = ?';
-    _rightResult = a - b;  
+    _rightResult = a - b;
   }
 
   void _generateMultiplicationTask() {
@@ -73,34 +72,38 @@ class _HeadcalculationState extends State<Headcalculation> {
     var b = randomInt(2, 13);
 
     _task = '$a * $b = ?';
-    _rightResult = a * b;  
+    _rightResult = a * b;
   }
 
   void _generateDivisionTask() {
     var a = randomInt(2, 13);
     var b = randomInt(2, 13);
 
-    var result = a * b; 
+    var result = a * b;
 
     _task = '$result / $a = ?';
-    _rightResult = b;  
+    _rightResult = b;
   }
 
   void _showFalse() {
     setState(() {
       _wasFalse = true;
-      Timer(new Duration(seconds: 1), () { setState(() {
-        _wasFalse = false;
-      });});
+      Timer(new Duration(seconds: 1), () {
+        setState(() {
+          _wasFalse = false;
+        });
+      });
     });
   }
 
   void _showRight() {
     setState(() {
       _wasRight = true;
-      Timer(new Duration(seconds: 1), () { setState(() {
-        _wasRight = false;
-      });});
+      Timer(new Duration(seconds: 1), () {
+        setState(() {
+          _wasRight = false;
+        });
+      });
     });
   }
 
@@ -127,39 +130,44 @@ class _HeadcalculationState extends State<Headcalculation> {
       } else {
         _showFalse();
       }
-    } catch(_) {
+    } catch (_) {
       _showFalse();
     } finally {
       _inputController.clear();
     }
-    
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar( title: const Text("Headcalculation"),),
-      body: ListView( children: [
-        ListTile(
-          title: Text(
-            _task,
-            style: const TextStyle(fontSize: 30),
+      appBar: AppBar(
+        title: const Text("Headcalculation"),
+      ),
+      body: ListView(
+        children: [
+          ListTile(
+            title: Text(
+              _task,
+              style: const TextStyle(fontSize: 30),
+            ),
           ),
-        ),
-        ListTile(
-          title: TextField(
-            keyboardType: TextInputType.number,
-            onSubmitted: (value) => _checkInput(),
-            controller: _inputController,
+          ListTile(
+            title: TextField(
+              keyboardType: TextInputType.number,
+              onSubmitted: (value) => _checkInput(),
+              controller: _inputController,
+            ),
+            trailing: ElevatedButton(
+              onPressed: () => _checkInput(),
+              child: const Icon(Icons.arrow_forward_rounded),
+              style: ElevatedButton.styleFrom(backgroundColor: _getColor()),
+            ),
           ),
-          trailing: ElevatedButton(
-            onPressed: () => _checkInput(),
-            child: const Icon(Icons.arrow_forward_rounded),
-            style: ElevatedButton.styleFrom(backgroundColor: _getColor()),
-          ),
-        ),
-        ListTile(title: Text('Score: $_score'),)
-      ],),
+          ListTile(
+            title: Text('Score: $_score'),
+          )
+        ],
+      ),
     );
   }
 }

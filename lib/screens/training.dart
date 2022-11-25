@@ -13,7 +13,8 @@ class Training extends StatelessWidget {
           children: [
             ListTile(
               title: const Text("Headcalculation"),
-              onTap: () => Navigator.of(context).pushNamed(HEADCALCULATION_ROUTE_NAME),
+              onTap: () =>
+                  Navigator.of(context).pushNamed(HEADCALCULATION_ROUTE_NAME),
               tileColor: Colors.deepOrange,
             ),
             ListTile(
@@ -28,7 +29,8 @@ class Training extends StatelessWidget {
             ),
             ListTile(
               title: const Text("Shapes"),
-              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const Shapes())),
+              onTap: () => Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const Shapes())),
               tileColor: Colors.purpleAccent,
             ),
           ],

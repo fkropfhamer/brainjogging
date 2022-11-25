@@ -51,7 +51,10 @@ class HomeCard extends StatelessWidget {
           onTap: () => Navigator.of(context).pushNamed(this.routeName),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [Text(this.text, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25))],
+            children: [
+              Text(this.text,
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25))
+            ],
           )),
     ));
   }
