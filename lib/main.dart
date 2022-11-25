@@ -1,9 +1,9 @@
 import 'package:brainjogging/screens/challenge.dart';
-import 'package:brainjogging/games/headcalculation.dart';
+import 'package:brainjogging/screens/games/headcalculation.dart';
 import 'package:brainjogging/screens/home.dart';
 import 'package:brainjogging/screens/random_challenge.dart';
-import 'package:brainjogging/games/rememeber.dart';
-import 'package:brainjogging/games/stroop.dart';
+import 'package:brainjogging/screens/games/rememeber.dart';
+import 'package:brainjogging/screens/games/stroop.dart';
 import 'package:brainjogging/screens/time_training.dart';
 import 'package:brainjogging/screens/training.dart';
 import 'package:flutter/material.dart';

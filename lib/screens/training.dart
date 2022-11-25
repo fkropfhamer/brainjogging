@@ -1,3 +1,4 @@
+import 'package:brainjogging/screens/games/shapes.dart';
 import 'package:brainjogging/main.dart';
 import 'package:flutter/material.dart';
 
@@ -24,6 +25,11 @@ class Training extends StatelessWidget {
               title: const Text("Remember"),
               onTap: () => Navigator.of(context).pushNamed(REMEMBER_ROUTE_NAME),
               tileColor: Colors.pinkAccent,
+            ),
+            ListTile(
+              title: const Text("Shapes"),
+              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const Shapes())),
+              tileColor: Colors.purpleAccent,
             ),
           ],
         ));

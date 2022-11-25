@@ -155,7 +155,7 @@ class _HeadcalculationState extends State<Headcalculation> {
           trailing: ElevatedButton(
             onPressed: () => _checkInput(),
             child: const Icon(Icons.arrow_forward_rounded),
-            style: ElevatedButton.styleFrom(primary: _getColor()),
+            style: ElevatedButton.styleFrom(backgroundColor: _getColor()),
           ),
         ),
         ListTile(title: Text('Score: $_score'),)
