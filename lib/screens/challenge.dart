@@ -1,3 +1,6 @@
+import 'package:brainjogging/widgets/games/gameWidget.dart';
+import 'package:brainjogging/widgets/games/stroop.dart';
+import 'package:brainjogging/widgets/games/tap.dart';
 import 'package:flutter/material.dart';
 
 class Challenge extends StatefulWidget {
@@ -9,20 +12,57 @@ class Challenge extends StatefulWidget {
 
 class _ChallengeState extends State<Challenge> {
   var isStarted = false;
+  var cIndex = 0;
+
+  void _setScore(score) {
+    setState(() {});
+  }
+
+  void _next() {
+    cIndex += 1;
+  }
+
+  GameWidget _getGame(int i) {
+    if (i == 0) {
+      return Tap(
+        setScore: _setScore,
+        finished: _next,
+      );
+    }
+
+    return Stroop(
+      setScore: _setScore,
+      finished: _next,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     if (isStarted) {
       return Container(
-        child: ElevatedButton(
-          onPressed: () {
-            setState(() {
-              isStarted = false;
-            });
-          },
-          child: const Text("Stop"),
-        ),
-      );
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          _getGame(cIndex),
+          ElevatedButton(
+            onPressed: () {
+              setState(() {
+                isStarted = false;
+              });
+            },
+            child: const Text("Stop"),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              setState(() {
+                cIndex += 1;
+              });
+            },
+            child: const Text("next"),
+          ),
+        ],
+      ));
     }
 
     return StatsWidget(

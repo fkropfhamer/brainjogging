@@ -68,7 +68,7 @@ class _StroopState extends State<Stroop> {
       var button = ElevatedButton(
         child: Text(colorText),
         onPressed: () => {_checkResult(colorText)},
-        style: ElevatedButton.styleFrom(primary: _colors[totalIndex]),
+        style: ElevatedButton.styleFrom(backgroundColor: _colors[totalIndex]),
       );
       buttons.add(button);
     }
