@@ -12,6 +12,19 @@ class Tap extends GameWidget {
 class _TapState extends State<Tap> {
   var _score = 0;
 
+  void tap() {
+    final newScore = _score + 1;
+    if (newScore > 3) {
+      widget.finished();
+
+      return;
+    }
+
+    setState(() {
+      _score = newScore;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,13 +32,7 @@ class _TapState extends State<Tap> {
         Text("Tap"),
         TextButton(
           child: Text("$_score"),
-          onPressed: () => {
-            setState(
-              () {
-                _score += 1;
-              },
-            )
-          },
+          onPressed: tap,
         )
       ]),
     );

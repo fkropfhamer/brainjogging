@@ -19,13 +19,7 @@ class _StroopState extends State<Stroop> {
         Text("stroop"),
         TextButton(
           child: Text("$_score"),
-          onPressed: () => {
-            setState(
-              () {
-                _score += 1;
-              },
-            )
-          },
+          onPressed: () => {widget.finished()},
         )
       ]),
     );

@@ -12,14 +12,49 @@ class Challenge extends StatefulWidget {
 
 class _ChallengeState extends State<Challenge> {
   var isStarted = false;
+  var isFinished = false;
+  var time = Duration();
   var cIndex = 0;
+  final _stopwatch = Stopwatch();
+
+  void _start() {
+    setState(() {
+      isStarted = true;
+      _stopwatch.start();
+    });
+  }
+
+  void _stop() {
+    _stopwatch.reset();
+    setState(() {
+      cIndex = 0;
+      isStarted = false;
+      isFinished = false;
+    });
+  }
 
   void _setScore(score) {
     setState(() {});
   }
 
   void _next() {
-    cIndex += 1;
+    final i = cIndex + 1;
+    if (i > 1) {
+      _finished();
+
+      return;
+    }
+
+    setState(() {
+      cIndex = i;
+    });
+  }
+
+  void _finished() {
+    setState(() {
+      isFinished = true;
+      time = _stopwatch.elapsed;
+    });
   }
 
   GameWidget _getGame(int i) {
@@ -38,6 +73,21 @@ class _ChallengeState extends State<Challenge> {
 
   @override
   Widget build(BuildContext context) {
+    if (isFinished) {
+      return Scaffold(
+          appBar: AppBar(title: const Text("Result")),
+          body: ListView(
+            children: [
+              Text("Result $time"),
+              ElevatedButton(
+                  onPressed: () {
+                    _stop();
+                  },
+                  child: const Text("Exit"))
+            ],
+          ));
+    }
+
     if (isStarted) {
       return Container(
           child: Column(
@@ -46,19 +96,11 @@ class _ChallengeState extends State<Challenge> {
         children: [
           _getGame(cIndex),
           ElevatedButton(
-            onPressed: () {
-              setState(() {
-                isStarted = false;
-              });
-            },
+            onPressed: _stop,
             child: const Text("Stop"),
           ),
           ElevatedButton(
-            onPressed: () {
-              setState(() {
-                cIndex += 1;
-              });
-            },
+            onPressed: _next,
             child: const Text("next"),
           ),
         ],
@@ -66,11 +108,7 @@ class _ChallengeState extends State<Challenge> {
     }
 
     return StatsWidget(
-      onStart: () {
-        setState(() {
-          isStarted = true;
-        });
-      },
+      onStart: _start,
     );
   }
 }
