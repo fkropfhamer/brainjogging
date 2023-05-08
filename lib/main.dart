@@ -39,7 +39,7 @@ class App extends StatelessWidget {
         TIME_TRAINING_ROUTE_NAME: (BuildContext context) => TimeTraining(),
         RANDOM_CHALLENGE_ROUTE_NAME: (BuildContext context) =>
             RandomChallenge(),
-        CHALLENGE_ROUTE_NAME: (BuildContext context) => Challenge(),
+        CHALLENGE_ROUTE_NAME: (BuildContext context) => TimeChallenge(),
       },
     );
   }

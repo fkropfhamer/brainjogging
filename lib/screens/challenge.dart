@@ -3,19 +3,20 @@ import 'package:brainjogging/widgets/games/stroop.dart';
 import 'package:brainjogging/widgets/games/tap.dart';
 import 'package:flutter/material.dart';
 
-class Challenge extends StatefulWidget {
-  const Challenge({Key? key}) : super(key: key);
+class TimeChallenge extends StatefulWidget {
+  const TimeChallenge({Key? key}) : super(key: key);
 
   @override
-  State<Challenge> createState() => _ChallengeState();
+  State<TimeChallenge> createState() => _TimeChallengeState();
 }
 
-class _ChallengeState extends State<Challenge> {
+class _TimeChallengeState extends State<TimeChallenge> {
   var isStarted = false;
   var isFinished = false;
   var time = Duration();
   var cIndex = 0;
   final _stopwatch = Stopwatch();
+  late final _games = [Stroop(setScore: _setScore, finished: _next), Tap(setScore: _setScore, finished: _next)];
 
   void _start() {
     setState(() {
@@ -39,7 +40,7 @@ class _ChallengeState extends State<Challenge> {
 
   void _next() {
     final i = cIndex + 1;
-    if (i > 1) {
+    if (i >= _games.length) {
       _finished();
 
       return;
@@ -58,17 +59,7 @@ class _ChallengeState extends State<Challenge> {
   }
 
   GameWidget _getGame(int i) {
-    if (i == 0) {
-      return Tap(
-        setScore: _setScore,
-        finished: _next,
-      );
-    }
-
-    return Stroop(
-      setScore: _setScore,
-      finished: _next,
-    );
+    return _games[i];
   }
 
   @override
