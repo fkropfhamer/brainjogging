@@ -1,11 +1,10 @@
 import 'package:brainjogging/screens/challenge.dart';
-import 'package:brainjogging/screens/games/headcalculation.dart';
 import 'package:brainjogging/screens/home.dart';
 import 'package:brainjogging/screens/random_challenge.dart';
 import 'package:brainjogging/screens/games/rememeber.dart';
 import 'package:brainjogging/screens/games/stroop.dart';
 import 'package:brainjogging/screens/time_training.dart';
-import 'package:brainjogging/screens/training.dart';
+import 'package:brainjogging/screens/training_list.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -32,8 +31,7 @@ class App extends StatelessWidget {
       ),
       home: Home(),
       routes: <String, WidgetBuilder>{
-        TRAINING_ROUTE_NAME: (BuildContext context) => Training(),
-        HEADCALCULATION_ROUTE_NAME: (BuildContext context) => Headcalculation(),
+        TRAINING_ROUTE_NAME: (BuildContext context) => TrainingList(),
         STROOP_ROUTE_NAME: (BuildContext context) => Stroop(),
         REMEMBER_ROUTE_NAME: (BuildContext context) => Remember(),
         TIME_TRAINING_ROUTE_NAME: (BuildContext context) => TimeTraining(),
@@ -46,7 +44,6 @@ class App extends StatelessWidget {
 }
 
 const TRAINING_ROUTE_NAME = '/training';
-const HEADCALCULATION_ROUTE_NAME = '/headcalculation';
 const STROOP_ROUTE_NAME = '/stroop';
 const REMEMBER_ROUTE_NAME = '/remember';
 const TIME_TRAINING_ROUTE_NAME = '/time_training';

@@ -1,35 +1,38 @@
-import 'package:brainjogging/screens/games/headcalculation.dart';
-import 'package:brainjogging/screens/games/rememeber.dart';
-import 'package:brainjogging/screens/games/shapes.dart';
-import 'package:brainjogging/screens/games/stroop.dart';
-import 'package:brainjogging/widgets/cards/training_card.dart';
+import 'package:brainjogging/widgets/games/game_widget.dart';
 import 'package:flutter/material.dart';
 
-class Training extends StatelessWidget {
-  const Training({Key? key}) : super(key: key);
+class Training<T extends GameWidget> extends StatefulWidget {
+  const Training({Key? key, required this.title, required this.createGame})
+      : super(key: key);
+
+  final String title;
+  final T Function(Function(int x)) createGame;
+
+  @override
+  State<Training> createState() => _TrainingState();
+}
+
+class _TrainingState extends State<Training> {
+  var _score = 0;
+
+  void _setScore(int score) {
+    setState(() {
+      _score = score;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text("Training")),
+        appBar: AppBar(
+          title: Text(widget.title),
+        ),
         body: Column(
           children: [
-            TrainingCard(
-                text: "Headcalculation",
-                target: Headcalculation(),
-                color: Colors.deepOrange),
-            TrainingCard(
-                text: "Stroop",
-                target: const Stroop(),
-                color: Colors.yellowAccent),
-            TrainingCard(
-                text: "Remember",
-                target: const Remember(),
-                color: Colors.pinkAccent),
-            TrainingCard(
-                text: "Shapes",
-                target: const Shapes(),
-                color: Colors.purpleAccent),
+            widget.createGame(_setScore),
+            ListTile(
+              title: Text('Score: $_score'),
+            )
           ],
         ));
   }

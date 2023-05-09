@@ -1,9 +1,14 @@
 import 'dart:async';
 import 'dart:math';
 
+import 'package:brainjogging/widgets/games/game_widget.dart';
 import 'package:flutter/material.dart';
 
-class Headcalculation extends StatefulWidget {
+class Headcalculation extends GameWidget {
+  Headcalculation(
+      {required Function(int score) setScore, Function()? finished})
+      : super(setScore: setScore, finished: finished);
+
   @override
   _HeadcalculationState createState() => _HeadcalculationState();
 }
@@ -119,14 +124,17 @@ class _HeadcalculationState extends State<Headcalculation> {
     return Colors.blue;
   }
 
+  void _increaseScore() {
+    _score += 1;
+    widget.setScore(_score);
+  }
+
   void _checkInput() {
     try {
       if (int.parse(_inputController.text) == _rightResult) {
         _showRight();
         _generateTask();
-        setState(() {
-          _score = _score + 1;
-        });
+        _increaseScore();
       } else {
         _showFalse();
       }
@@ -139,35 +147,27 @@ class _HeadcalculationState extends State<Headcalculation> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Headcalculation"),
-      ),
-      body: ListView(
-        children: [
-          ListTile(
-            title: Text(
-              _task,
-              style: const TextStyle(fontSize: 30),
-            ),
+    return Column(
+      children: [
+        ListTile(
+          title: Text(
+            _task,
+            style: const TextStyle(fontSize: 30),
           ),
-          ListTile(
-            title: TextField(
-              keyboardType: TextInputType.number,
-              onSubmitted: (value) => _checkInput(),
-              controller: _inputController,
-            ),
-            trailing: ElevatedButton(
-              onPressed: () => _checkInput(),
-              child: const Icon(Icons.arrow_forward_rounded),
-              style: ElevatedButton.styleFrom(backgroundColor: _getColor()),
-            ),
+        ),
+        ListTile(
+          title: TextField(
+            keyboardType: TextInputType.number,
+            onSubmitted: (value) => _checkInput(),
+            controller: _inputController,
           ),
-          ListTile(
-            title: Text('Score: $_score'),
-          )
-        ],
-      ),
+          trailing: ElevatedButton(
+            onPressed: () => _checkInput(),
+            child: const Icon(Icons.arrow_forward_rounded),
+            style: ElevatedButton.styleFrom(backgroundColor: _getColor()),
+          ),
+        ),
+      ],
     );
   }
 }
