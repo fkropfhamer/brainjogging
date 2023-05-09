@@ -2,8 +2,8 @@ import 'package:brainjogging/widgets/games/gameWidget.dart';
 import 'package:flutter/material.dart';
 
 class Tap extends GameWidget {
-  Tap({required Function(int score) setScore, required Function() finished})
-      : super(setScore: setScore, finished: finished);
+  Tap({required Function(int score) setScore, required Function() finished, numTasks})
+      : super(setScore: setScore, finished: finished, numTasks: numTasks);
 
   @override
   State<Tap> createState() => _TapState();
@@ -14,7 +14,7 @@ class _TapState extends State<Tap> {
 
   void tap() {
     final newScore = _score + 1;
-    if (newScore > 3) {
+    if (widget.numTasks != null && newScore > widget.numTasks!) {
       widget.finished();
 
       return;

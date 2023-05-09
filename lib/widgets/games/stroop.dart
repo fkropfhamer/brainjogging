@@ -2,8 +2,8 @@ import 'package:brainjogging/widgets/games/gameWidget.dart';
 import 'package:flutter/material.dart';
 
 class Stroop extends GameWidget {
-  Stroop({required Function(int score) setScore, required Function() finished})
-      : super(setScore: setScore, finished: finished);
+  Stroop({required Function(int score) setScore, required Function() finished, numTasks})
+      : super(setScore: setScore, finished: finished, numTasks: numTasks);
 
   @override
   State<Stroop> createState() => _StroopState();
