@@ -1,4 +1,4 @@
-import 'package:brainjogging/widgets/games/gameWidget.dart';
+import 'package:brainjogging/widgets/games/game_widget.dart';
 import 'package:brainjogging/widgets/games/stroop.dart';
 import 'package:brainjogging/widgets/games/tap.dart';
 import 'package:flutter/material.dart';
