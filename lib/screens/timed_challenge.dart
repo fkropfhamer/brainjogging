@@ -5,20 +5,23 @@ import 'package:flutter/material.dart';
 
 final tasksPerGame = 5;
 
-class TimeChallenge extends StatefulWidget {
-  const TimeChallenge({Key? key}) : super(key: key);
+class TimedChallenge extends StatefulWidget {
+  const TimedChallenge({Key? key}) : super(key: key);
 
   @override
-  State<TimeChallenge> createState() => _TimeChallengeState();
+  State<TimedChallenge> createState() => _TimedChallengeState();
 }
 
-class _TimeChallengeState extends State<TimeChallenge> {
+class _TimedChallengeState extends State<TimedChallenge> {
   var isStarted = false;
   var isFinished = false;
   var time = Duration();
   var cIndex = 0;
   final _stopwatch = Stopwatch();
-  late final _games = [Stroop(setScore: _setScore, finished: _next), Tap(setScore: _setScore, finished: _next, numTasks: tasksPerGame)];
+  late final _games = [
+    Stroop(setScore: _setScore, finished: _next),
+    Tap(setScore: _setScore, finished: _next, numTasks: tasksPerGame)
+  ];
 
   void _start() {
     setState(() {

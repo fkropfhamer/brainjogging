@@ -1,4 +1,4 @@
-import 'package:brainjogging/screens/challenge.dart';
+import 'package:brainjogging/screens/timed_challenge.dart';
 import 'package:brainjogging/screens/home.dart';
 import 'package:brainjogging/screens/random_challenge.dart';
 import 'package:brainjogging/screens/games/rememeber.dart';
@@ -37,7 +37,7 @@ class App extends StatelessWidget {
         TIME_TRAINING_ROUTE_NAME: (BuildContext context) => TimeTraining(),
         RANDOM_CHALLENGE_ROUTE_NAME: (BuildContext context) =>
             RandomChallenge(),
-        CHALLENGE_ROUTE_NAME: (BuildContext context) => TimeChallenge(),
+        CHALLENGE_ROUTE_NAME: (BuildContext context) => TimedChallenge(),
       },
     );
   }

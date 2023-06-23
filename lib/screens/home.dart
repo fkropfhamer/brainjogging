@@ -1,7 +1,12 @@
-import 'package:brainjogging/main.dart';
+import 'package:brainjogging/screens/random_challenge.dart';
 import 'package:brainjogging/screens/settings.dart';
+import 'package:brainjogging/screens/time_challenge.dart';
+import 'package:brainjogging/screens/time_training.dart';
+import 'package:brainjogging/screens/training_list.dart';
 import 'package:brainjogging/widgets/cards/home_card.dart';
 import 'package:flutter/material.dart';
+
+import 'timed_challenge.dart';
 
 class Home extends StatelessWidget {
   @override
@@ -11,26 +16,32 @@ class Home extends StatelessWidget {
           title: const Text("Home"),
           actions: [
             IconButton(
-                onPressed: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Settings())),
+                onPressed: () => Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => Settings())),
                 icon: const Icon(Icons.settings))
           ],
         ),
         body: Column(
           children: [
-            HomeCard(text: "Training", routeName: TRAINING_ROUTE_NAME),
+            HomeCard(
+                text: "Training",
+                target: TrainingList()),
             HomeCard(
               text: "Time Training",
-              routeName: TIME_TRAINING_ROUTE_NAME,
+              target: TimeTraining(),
             ),
             HomeCard(
               text: "Random Challenge",
-              routeName: RANDOM_CHALLENGE_ROUTE_NAME,
+              target: RandomChallenge(),
             ),
             HomeCard(
               text: "Challenge",
-              routeName: CHALLENGE_ROUTE_NAME,
+              target: TimedChallenge(),
             ),
+            HomeCard(
+              text: "Time Challenge",
+              target: TimeChallenge(),
+            )
           ],
         ));
   }
