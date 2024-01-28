@@ -14,7 +14,8 @@ class Settings extends StatelessWidget {
               icon: Icon(Icons.info))
         ],
       ),
-      body: const Text("TODO"),
+      // TODO
+      body: const Text("Coming soon!"),
     );
   }
 }
