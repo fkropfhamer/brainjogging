@@ -1,2 +1,2 @@
 json_key_file("~/.fastlane/google-play-console-creds.json") # Path to the json secret file - Follow https://docs.fastlane.tools/actions/supply/#setup to get one
-package_name("de.telefongarten.brainjogging") # e.g. com.krausefx.app
+package_name("com.qokoriko.brainjogging") # e.g. com.krausefx.app

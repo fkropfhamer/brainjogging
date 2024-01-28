@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="de.telefongarten.brainjogging">
+    package="com.qokoriko.brainjogging">
    <application
         android:label="brainjogging"
         android:icon="@mipmap/ic_launcher">

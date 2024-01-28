@@ -1,5 +1,6 @@
-flutter_icons:
+flutter_launcher_icons:
   android: true
   ios: true
   image_path_ios: "assets/icon/icon.png"
   image_path_android: "assets/icon/icon_transparent.png"
+  remove_alpha_ios: true
