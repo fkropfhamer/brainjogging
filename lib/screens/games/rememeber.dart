@@ -153,7 +153,7 @@ class _RememberState extends State<Remember> {
               trailing: ElevatedButton(
                 onPressed: () => _onSubmit(),
                 child: const Icon(Icons.arrow_forward_rounded),
-                style: ElevatedButton.styleFrom(primary: _getColor()),
+                style: ElevatedButton.styleFrom(backgroundColor: _getColor()),
               ),
             ),
           Center(child: Text("Score: $_score", style: TextStyle(fontSize: 30))),

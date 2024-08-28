@@ -4,13 +4,13 @@ import 'dart:math';
 import 'package:brainjogging/widgets/games/game_widget.dart';
 import 'package:flutter/material.dart';
 
-class Headcalculation extends GameWidget {
-  Headcalculation(
+class Calculate extends GameWidget {
+  Calculate(
       {required Function(int score) setScore, Function()? finished})
       : super(setScore: setScore, finished: finished);
 
   @override
-  _HeadcalculationState createState() => _HeadcalculationState();
+  _CalculateState createState() => _CalculateState();
 }
 
 var random = Random();
@@ -20,8 +20,8 @@ int randomInt(int min, int max) {
   return min + random.nextInt(max - min);
 }
 
-class _HeadcalculationState extends State<Headcalculation> {
-  _HeadcalculationState() {
+class _CalculateState extends State<Calculate> {
+  _CalculateState() {
     _generateTask();
   }
 
