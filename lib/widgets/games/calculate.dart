@@ -1,9 +1,10 @@
 import 'dart:async';
-import 'dart:math';
 
 import 'package:brainjogging/widgets/games/game_widget.dart';
 import 'package:brainjogging/widgets/number_keyboard.dart';
 import 'package:flutter/material.dart';
+
+import '../../util.dart';
 
 class Calculate extends GameWidget {
   Calculate(
@@ -12,13 +13,6 @@ class Calculate extends GameWidget {
 
   @override
   _CalculateState createState() => _CalculateState();
-}
-
-var random = Random();
-
-// min inclusive, max exclusive
-int randomInt(int min, int max) {
-  return min + random.nextInt(max - min);
 }
 
 class _CalculateState extends State<Calculate> {
@@ -34,7 +28,7 @@ class _CalculateState extends State<Calculate> {
   var _wasRight = false;
 
   void _generateTask() {
-    var type = random.nextInt(4);
+    final type = randomInt(max: 4);
     switch (type) {
       case 0:
         _generateAdditionTask();
@@ -52,19 +46,19 @@ class _CalculateState extends State<Calculate> {
   }
 
   void _generateAdditionTask() {
-    var a = randomInt(1, 100);
-    var b = randomInt(1, 100);
+    final a = randomInt(min: 1, max: 100);
+    final b = randomInt(min: 1, max: 100);
 
     _task = '$a + $b = ?';
     _rightResult = a + b;
   }
 
   void _generateSubtractionTask() {
-    var a = randomInt(1, 100);
-    var b = randomInt(1, 100);
+    var a = randomInt(min: 1, max: 100);
+    var b = randomInt(min: 1, max: 100);
 
     if (b > a) {
-      var tmp = a;
+      final tmp = a;
       a = b;
       b = tmp;
     }
@@ -74,16 +68,16 @@ class _CalculateState extends State<Calculate> {
   }
 
   void _generateMultiplicationTask() {
-    var a = randomInt(2, 13);
-    var b = randomInt(2, 13);
+    final a = randomInt(min: 2, max: 13);
+    final b = randomInt(min: 2, max: 13);
 
     _task = '$a * $b = ?';
     _rightResult = a * b;
   }
 
   void _generateDivisionTask() {
-    var a = randomInt(2, 13);
-    var b = randomInt(2, 13);
+    final a = randomInt(min: 2, max: 13);
+    final b = randomInt(min: 2, max: 13);
 
     var result = a * b;
 
