@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:brainjogging/widgets/games/game_widget.dart';
+import 'package:brainjogging/widgets/number_keyboard.dart';
 import 'package:flutter/material.dart';
 
 class Calculate extends GameWidget {
@@ -167,6 +168,7 @@ class _CalculateState extends State<Calculate> {
             style: ElevatedButton.styleFrom(backgroundColor: _getColor()),
           ),
         ),
+        NumberKeyboard()
       ],
     );
   }
