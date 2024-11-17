@@ -26,10 +26,10 @@ class _CalculateState extends State<Calculate> {
     _generateTask();
   }
 
+  var _input = "";
   var _task;
   var _score = 0;
   var _rightResult;
-  var _inputController = TextEditingController();
   var _wasFalse = false;
   var _wasRight = false;
 
@@ -113,7 +113,7 @@ class _CalculateState extends State<Calculate> {
     });
   }
 
-  MaterialColor _getColor() {
+  Color _getColor() {
     if (_wasRight) {
       return Colors.green;
     }
@@ -122,7 +122,7 @@ class _CalculateState extends State<Calculate> {
       return Colors.red;
     }
 
-    return Colors.blue;
+    return Colors.white;
   }
 
   void _increaseScore() {
@@ -132,7 +132,7 @@ class _CalculateState extends State<Calculate> {
 
   void _checkInput() {
     try {
-      if (int.parse(_inputController.text) == _rightResult) {
+      if (int.parse(_input) == _rightResult) {
         _showRight();
         _generateTask();
         _increaseScore();
@@ -141,8 +141,6 @@ class _CalculateState extends State<Calculate> {
       }
     } catch (_) {
       _showFalse();
-    } finally {
-      _inputController.clear();
     }
   }
 
@@ -156,19 +154,12 @@ class _CalculateState extends State<Calculate> {
             style: const TextStyle(fontSize: 30),
           ),
         ),
-        ListTile(
-          title: TextField(
-            keyboardType: TextInputType.number,
-            onSubmitted: (value) => _checkInput(),
-            controller: _inputController,
-          ),
-          trailing: ElevatedButton(
-            onPressed: () => _checkInput(),
-            child: const Icon(Icons.arrow_forward_rounded),
-            style: ElevatedButton.styleFrom(backgroundColor: _getColor()),
-          ),
-        ),
-        NumberKeyboard()
+        Container(color: _getColor(), child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [Text(_input)],),),
+        NumberKeyboard(onChange: (number) { setState(() {
+          _input = number;
+        });}, onSubmit: (number) {
+          _checkInput();
+        },)
       ],
     );
   }
