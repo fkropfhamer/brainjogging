@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class RandomChallenge extends StatelessWidget {
-  const RandomChallenge({Key? key}) : super(key: key);
+  const RandomChallenge({super.key});
 
   @override
   Widget build(BuildContext context) {

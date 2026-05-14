@@ -3,10 +3,10 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class Stroop extends StatefulWidget {
-  const Stroop({Key? key}) : super(key: key);
+  const Stroop({super.key});
 
   @override
-  _StroopState createState() => _StroopState();
+  StroopState createState() => StroopState();
 }
 
 var colors = {
@@ -21,31 +21,31 @@ var colors = {
   'Black': Colors.black,
 };
 
-class _StroopState extends State<Stroop> {
-  var _color;
-  var _colorText;
-  var _random = new Random();
+class StroopState extends State<Stroop> {
+  late Color _color;
+  late String _colorText;
+  final _random = Random();
   var _score = 0;
 
-  var _colorTexts = colors.keys.toList();
-  var _colors = colors.values.toList();
+  final _colorTexts = colors.keys.toList();
+  final _colors = colors.values.toList();
 
-  _StroopState() {
+  StroopState() {
     _generateTask();
   }
 
-  _generateTask() {
+  void _generateTask() {
     _generateColor();
     _colorTexts.shuffle();
     _colors.shuffle();
   }
 
-  _generateColor() {
+  void _generateColor() {
     _colorText = colors.keys.elementAt(_random.nextInt(colors.length));
     _color = colors.values.elementAt(_random.nextInt(colors.length));
   }
 
-  _checkResult(String color) {
+  void _checkResult(String color) {
     var inputColor = colors[color];
 
     if (inputColor == _color) {
@@ -66,15 +66,16 @@ class _StroopState extends State<Stroop> {
       var colorText = _colorTexts[totalIndex];
 
       var button = ElevatedButton(
-        child: Text(colorText),
         onPressed: () => {_checkResult(colorText)},
         style: ElevatedButton.styleFrom(backgroundColor: _colors[totalIndex]),
+        child: Text(colorText),
       );
       buttons.add(button);
     }
 
     return Row(
-        children: buttons, mainAxisAlignment: MainAxisAlignment.spaceAround);
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: buttons);
   }
 
   @override

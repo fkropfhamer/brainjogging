@@ -1,23 +1,17 @@
 import 'dart:async';
-import 'dart:math';
 
 import 'package:brainjogging/widgets/games/game_widget.dart';
+import 'package:brainjogging/widgets/number_keyboard.dart';
 import 'package:flutter/material.dart';
+
+import '../../util.dart';
 
 class Calculate extends GameWidget {
   Calculate(
-      {required Function(int score) setScore, Function()? finished})
-      : super(setScore: setScore, finished: finished);
+      {super.key, required super.setScore, super.finished});
 
   @override
   _CalculateState createState() => _CalculateState();
-}
-
-var random = Random();
-
-// min inclusive, max exclusive
-int randomInt(int min, int max) {
-  return min + random.nextInt(max - min);
 }
 
 class _CalculateState extends State<Calculate> {
@@ -25,15 +19,15 @@ class _CalculateState extends State<Calculate> {
     _generateTask();
   }
 
+  var _input = "";
   var _task;
   var _score = 0;
   var _rightResult;
-  var _inputController = TextEditingController();
   var _wasFalse = false;
   var _wasRight = false;
 
   void _generateTask() {
-    var type = random.nextInt(4);
+    final type = randomInt(max: 4);
     switch (type) {
       case 0:
         _generateAdditionTask();
@@ -51,19 +45,19 @@ class _CalculateState extends State<Calculate> {
   }
 
   void _generateAdditionTask() {
-    var a = randomInt(1, 100);
-    var b = randomInt(1, 100);
+    final a = randomInt(min: 1, max: 100);
+    final b = randomInt(min: 1, max: 100);
 
     _task = '$a + $b = ?';
     _rightResult = a + b;
   }
 
   void _generateSubtractionTask() {
-    var a = randomInt(1, 100);
-    var b = randomInt(1, 100);
+    var a = randomInt(min: 1, max: 100);
+    var b = randomInt(min: 1, max: 100);
 
     if (b > a) {
-      var tmp = a;
+      final tmp = a;
       a = b;
       b = tmp;
     }
@@ -73,16 +67,16 @@ class _CalculateState extends State<Calculate> {
   }
 
   void _generateMultiplicationTask() {
-    var a = randomInt(2, 13);
-    var b = randomInt(2, 13);
+    final a = randomInt(min: 2, max: 13);
+    final b = randomInt(min: 2, max: 13);
 
     _task = '$a * $b = ?';
     _rightResult = a * b;
   }
 
   void _generateDivisionTask() {
-    var a = randomInt(2, 13);
-    var b = randomInt(2, 13);
+    final a = randomInt(min: 2, max: 13);
+    final b = randomInt(min: 2, max: 13);
 
     var result = a * b;
 
@@ -93,7 +87,7 @@ class _CalculateState extends State<Calculate> {
   void _showFalse() {
     setState(() {
       _wasFalse = true;
-      Timer(new Duration(seconds: 1), () {
+      Timer(Duration(seconds: 1), () {
         setState(() {
           _wasFalse = false;
         });
@@ -104,7 +98,7 @@ class _CalculateState extends State<Calculate> {
   void _showRight() {
     setState(() {
       _wasRight = true;
-      Timer(new Duration(seconds: 1), () {
+      Timer(Duration(seconds: 1), () {
         setState(() {
           _wasRight = false;
         });
@@ -112,7 +106,7 @@ class _CalculateState extends State<Calculate> {
     });
   }
 
-  MaterialColor _getColor() {
+  Color _getColor() {
     if (_wasRight) {
       return Colors.green;
     }
@@ -121,7 +115,7 @@ class _CalculateState extends State<Calculate> {
       return Colors.red;
     }
 
-    return Colors.blue;
+    return Colors.white;
   }
 
   void _increaseScore() {
@@ -131,7 +125,7 @@ class _CalculateState extends State<Calculate> {
 
   void _checkInput() {
     try {
-      if (int.parse(_inputController.text) == _rightResult) {
+      if (int.parse(_input) == _rightResult) {
         _showRight();
         _generateTask();
         _increaseScore();
@@ -140,8 +134,6 @@ class _CalculateState extends State<Calculate> {
       }
     } catch (_) {
       _showFalse();
-    } finally {
-      _inputController.clear();
     }
   }
 
@@ -155,18 +147,12 @@ class _CalculateState extends State<Calculate> {
             style: const TextStyle(fontSize: 30),
           ),
         ),
-        ListTile(
-          title: TextField(
-            keyboardType: TextInputType.number,
-            onSubmitted: (value) => _checkInput(),
-            controller: _inputController,
-          ),
-          trailing: ElevatedButton(
-            onPressed: () => _checkInput(),
-            child: const Icon(Icons.arrow_forward_rounded),
-            style: ElevatedButton.styleFrom(backgroundColor: _getColor()),
-          ),
-        ),
+        Container(color: _getColor(), child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [Text(_input)],),),
+        NumberKeyboard(onChange: (number) { setState(() {
+          _input = number;
+        });}, onSubmit: (number) {
+          _checkInput();
+        },)
       ],
     );
   }

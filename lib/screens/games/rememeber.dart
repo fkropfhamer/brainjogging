@@ -3,20 +3,20 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class Remember extends StatefulWidget {
-  const Remember({Key? key}) : super(key: key);
+  const Remember({super.key});
 
   @override
-  _RememberState createState() => _RememberState();
+  RememberState createState() => RememberState();
 }
 
 const fadeDurationMs = 500;
 const visibleDurationMs = 200;
 const pauseDurationMs = 100;
-const fadeDuration = const Duration(milliseconds: fadeDurationMs);
+const fadeDuration = Duration(milliseconds: fadeDurationMs);
 const visibleDuration =
-    const Duration(milliseconds: fadeDurationMs + visibleDurationMs);
+    Duration(milliseconds: fadeDurationMs + visibleDurationMs);
 const pauseDuration =
-    const Duration(milliseconds: fadeDurationMs + pauseDurationMs);
+    Duration(milliseconds: fadeDurationMs + pauseDurationMs);
 
 var random = Random();
 
@@ -30,18 +30,18 @@ List<int> _generateSequence() {
   return seq;
 }
 
-class _RememberState extends State<Remember> {
+class RememberState extends State<Remember> {
   var _visible = false;
   var _isRunning = false;
   var _number = 0;
-  var _inputController = TextEditingController();
+  final _inputController = TextEditingController();
   var _score = 0;
   var _seqString = "";
   var _isWaitingForInput = false;
   var _wasFalse = false;
   var _wasRight = false;
 
-  _start() async {
+  Future<void> _start() async {
     if (_isRunning) {
       return;
     }
@@ -49,9 +49,6 @@ class _RememberState extends State<Remember> {
     var seq = _generateSequence();
     _seqString = seq.fold<String>(
         "", (previousValue, element) => previousValue + element.toString());
-    print(_seqString);
-
-    print(seq);
 
     for (var i = 0; i < seq.length; i++) {
       setState(() {
@@ -70,8 +67,7 @@ class _RememberState extends State<Remember> {
     });
   }
 
-  _onSubmit() {
-    print(_inputController.text);
+  void _onSubmit() {
     var input = _inputController.text;
     if (input == _seqString) {
       _showRight();
@@ -89,7 +85,7 @@ class _RememberState extends State<Remember> {
   void _showFalse() {
     setState(() {
       _wasFalse = true;
-      Timer(new Duration(seconds: 1), () {
+      Timer(Duration(seconds: 1), () {
         setState(() {
           _wasFalse = false;
         });
@@ -100,7 +96,7 @@ class _RememberState extends State<Remember> {
   void _showRight() {
     setState(() {
       _wasRight = true;
-      Timer(new Duration(seconds: 1), () {
+      Timer(Duration(seconds: 1), () {
         setState(() {
           _wasRight = false;
         });
@@ -152,8 +148,8 @@ class _RememberState extends State<Remember> {
               ),
               trailing: ElevatedButton(
                 onPressed: () => _onSubmit(),
-                child: const Icon(Icons.arrow_forward_rounded),
                 style: ElevatedButton.styleFrom(backgroundColor: _getColor()),
+                child: const Icon(Icons.arrow_forward_rounded),
               ),
             ),
           Center(child: Text("Score: $_score", style: TextStyle(fontSize: 30))),
