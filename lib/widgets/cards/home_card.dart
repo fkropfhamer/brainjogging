@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 class HomeCard extends StatelessWidget {
-  const HomeCard({Key? key, required this.text, required this.target})
-      : super(key: key);
+  const HomeCard({super.key, required this.text, required this.target});
 
   final String text;
   final Widget target;
@@ -14,11 +13,11 @@ class HomeCard extends StatelessWidget {
       child: InkWell(
           splashColor: Colors.blue.withAlpha(40),
           onTap: () => Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => this.target)),
+              .push(MaterialPageRoute(builder: (context) => target)),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(this.text,
+              Text(text,
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25))
             ],
           )),

@@ -18,24 +18,24 @@ class _NumberKeyboardState extends State<NumberKeyboard> {
       _number = number;
     });
 
-    if (this.widget.onChange != null) {
-      this.widget.onChange!(number);
+    if (widget.onChange != null) {
+      widget.onChange!(number);
     }
   }
 
   void addNumber(int number) {
-    setNumber(_number + "$number");
+    setNumber("$_number$number");
   }
 
   void remove() {
-    if (_number.length > 0) {
+    if (_number.isNotEmpty) {
       setNumber(_number.substring(0, _number.length - 1));
     }
   }
 
   void submit() {
-    if (this.widget.onSubmit != null) {
-      this.widget.onSubmit!(_number);
+    if (widget.onSubmit != null) {
+      widget.onSubmit!(_number);
     }
 
     setNumber("");
@@ -48,17 +48,17 @@ class _NumberKeyboardState extends State<NumberKeyboard> {
       crossAxisCount: 3,
       shrinkWrap: true,
       children: [
-        NumberButton(setNumber: this.addNumber, number: 1),
-        NumberButton(setNumber: this.addNumber, number: 2),
-        NumberButton(setNumber: this.addNumber, number: 3),
-        NumberButton(setNumber: this.addNumber, number: 4),
-        NumberButton(setNumber: this.addNumber, number: 5),
-        NumberButton(setNumber: this.addNumber, number: 6),
-        NumberButton(setNumber: this.addNumber, number: 7),
-        NumberButton(setNumber: this.addNumber, number: 8),
-        NumberButton(setNumber: this.addNumber, number: 9),
+        NumberButton(setNumber: addNumber, number: 1),
+        NumberButton(setNumber: addNumber, number: 2),
+        NumberButton(setNumber: addNumber, number: 3),
+        NumberButton(setNumber: addNumber, number: 4),
+        NumberButton(setNumber: addNumber, number: 5),
+        NumberButton(setNumber: addNumber, number: 6),
+        NumberButton(setNumber: addNumber, number: 7),
+        NumberButton(setNumber: addNumber, number: 8),
+        NumberButton(setNumber: addNumber, number: 9),
         ElevatedButton(onPressed: () { remove(); }, child: const Text("back")),
-        NumberButton(setNumber: this.addNumber, number: 0),
+        NumberButton(setNumber: addNumber, number: 0),
         ElevatedButton(onPressed: () { submit(); }, child: const Text("submit"))
     ]);
   }
@@ -74,7 +74,7 @@ class NumberButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(5),
-      child: ElevatedButton(onPressed: () { this.setNumber(number); }, child: Text("$number")),
+      child: ElevatedButton(onPressed: () { setNumber(number); }, child: Text("$number")),
     );
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class TimeTraining extends StatelessWidget {
-  const TimeTraining({Key? key}) : super(key: key);
+  const TimeTraining({super.key});
 
   @override
   Widget build(BuildContext context) {

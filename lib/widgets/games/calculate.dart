@@ -8,8 +8,7 @@ import '../../util.dart';
 
 class Calculate extends GameWidget {
   Calculate(
-      {required Function(int score) setScore, Function()? finished})
-      : super(setScore: setScore, finished: finished);
+      {super.key, required super.setScore, super.finished});
 
   @override
   _CalculateState createState() => _CalculateState();
@@ -88,7 +87,7 @@ class _CalculateState extends State<Calculate> {
   void _showFalse() {
     setState(() {
       _wasFalse = true;
-      Timer(new Duration(seconds: 1), () {
+      Timer(Duration(seconds: 1), () {
         setState(() {
           _wasFalse = false;
         });
@@ -99,7 +98,7 @@ class _CalculateState extends State<Calculate> {
   void _showRight() {
     setState(() {
       _wasRight = true;
-      Timer(new Duration(seconds: 1), () {
+      Timer(Duration(seconds: 1), () {
         setState(() {
           _wasRight = false;
         });

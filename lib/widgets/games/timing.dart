@@ -4,8 +4,7 @@ import 'package:brainjogging/widgets/games/game_widget.dart';
 import 'package:flutter/material.dart';
 
 class Timing extends GameWidget {
-  Timing({required Function(int score) setScore, Function()? finished})
-      : super(setScore: setScore, finished: finished);
+  Timing({super.key, required super.setScore, super.finished});
 
   @override
   State<Timing> createState() => _TimingState();
@@ -14,7 +13,7 @@ class Timing extends GameWidget {
 class _TimingState extends State<Timing> {
   String _text = "";
   bool _isStarted = false;
-  var _stopwatch = Stopwatch();
+  final _stopwatch = Stopwatch();
 
   void _start() async {
     _isStarted = true;

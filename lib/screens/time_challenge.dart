@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 final tasksPerGame = 5;
 
 class TimeChallenge extends StatefulWidget {
-  const TimeChallenge({Key? key}) : super(key: key);
+  const TimeChallenge({super.key});
 
   @override
   State<TimeChallenge> createState() => _TimeChallengeState();
@@ -110,7 +110,7 @@ class _TimeChallengeState extends State<TimeChallenge> {
 }
 
 class StatsWidget extends StatefulWidget {
-  const StatsWidget({Key? key, required this.onStart}) : super(key: key);
+  const StatsWidget({super.key, required this.onStart});
 
   final VoidCallback onStart;
 

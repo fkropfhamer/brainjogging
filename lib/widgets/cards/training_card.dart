@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 class TrainingCard extends StatelessWidget {
-  const TrainingCard({Key? key, required this.text, required this.target, this.color = Colors.white})
-      : super(key: key);
+  const TrainingCard({super.key, required this.text, required this.target, this.color = Colors.white});
 
   final String text;
   final Widget target;
@@ -24,7 +23,7 @@ class TrainingCard extends StatelessWidget {
                child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(this.text,
+                  Text(text,
                       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25))
                 ],
               ))),

@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class Shapes extends StatefulWidget {
-  const Shapes({Key? key}) : super(key: key);
+  const Shapes({super.key});
 
   @override
   State<Shapes> createState() => _ShapesState();
@@ -20,21 +20,19 @@ class _ShapesState extends State<Shapes> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Shapes")),
-      body: Container(
-        child: Center(
+      body: Center(
           child: CustomPaint(
             size: Size(500, 500),
             painter: ShapesPainter(shapes),
             child: ElevatedButton(
                 onPressed: () {
                   setState(() {
-                    this.shapes = [Circle(0, 0, Colors.green)];
+                    shapes = [Circle(0, 0, Colors.green)];
                   });
                 },
                 child: const Text("test")),
           ),
         ),
-      ),
     );
   }
 }
@@ -56,7 +54,7 @@ abstract class Shape {
 }
 
 class Circle extends Shape {
-  Circle(double x, double y, Color color) : super(x, y, color);
+  Circle(super.x, super.y, super.color);
 
   @override
   void draw(Canvas canvas) {
@@ -65,7 +63,7 @@ class Circle extends Shape {
 }
 
 class Rectangle extends Shape {
-  Rectangle(double x, double y, Color color) : super(x, y, color);
+  Rectangle(super.x, super.y, super.color);
 
   @override
   void draw(Canvas canvas) {
@@ -80,9 +78,9 @@ class ShapesPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    shapes.forEach((shape) {
+    for (var shape in shapes) {
       shape.draw(canvas);
-    });
+    }
   }
 
   @override

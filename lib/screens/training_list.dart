@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import '../widgets/games/calculate.dart';
 
 class TrainingList extends StatelessWidget {
-  const TrainingList({Key? key}) : super(key: key);
+  const TrainingList({super.key});
 
   @override
   Widget build(BuildContext context) {

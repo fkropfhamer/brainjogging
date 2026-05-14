@@ -2,8 +2,7 @@ import 'package:brainjogging/widgets/games/game_widget.dart';
 import 'package:flutter/material.dart';
 
 class Training<T extends GameWidget> extends StatefulWidget {
-  const Training({Key? key, required this.title, required this.createGame})
-      : super(key: key);
+  const Training({super.key, required this.title, required this.createGame});
 
   final String title;
   final T Function(Function(int x)) createGame;
