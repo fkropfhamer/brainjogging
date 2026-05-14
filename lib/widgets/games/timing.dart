@@ -30,7 +30,7 @@ class _TimingState extends State<Timing> {
     _stopwatch.start();
 
     setState(() {
-      _text = "";  
+      _text = "";
     });
   }
 
@@ -38,7 +38,7 @@ class _TimingState extends State<Timing> {
     _stopwatch.stop();
     setState(() {
       _isStarted = false;
-      _text = "${_stopwatch.elapsed.inSeconds}";  
+      _text = "${_stopwatch.elapsed.inSeconds}";
     });
   }
 
@@ -46,17 +46,15 @@ class _TimingState extends State<Timing> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        ListTile(
-          title: Text("Press Stop after 30 Seconds"),
-        ),
-        ListTile(
-          title: Text(_text)
-        ),
-        () {if (!_isStarted) {
-          return ElevatedButton(onPressed: _start, child: Text("Start"));
-        } else {
-          return ElevatedButton(onPressed: _stop, child: Text("Stop"));
-        }}()
+        ListTile(title: Text("Press Stop after 30 Seconds")),
+        ListTile(title: Text(_text)),
+        () {
+          if (!_isStarted) {
+            return ElevatedButton(onPressed: _start, child: Text("Start"));
+          } else {
+            return ElevatedButton(onPressed: _stop, child: Text("Stop"));
+          }
+        }(),
       ],
     );
   }

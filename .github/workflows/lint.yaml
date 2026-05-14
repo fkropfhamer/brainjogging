@@ -1,0 +1,30 @@
+name: Code Quality Check
+
+on:
+  push:
+    branches: main
+  pull_request:
+    branches: main
+
+jobs:
+  analyze-and-format:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Verify formatting
+        run: dart format --output=none --set-exit-if-changed .
+
+      - name: Analyze project
+        run: flutter analyze --fatal-infos --fatal-warnings

@@ -23,16 +23,13 @@ class _TrainingState extends State<Training> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
-        ),
-        body: Column(
-          children: [
-            widget.createGame(_setScore),
-            ListTile(
-              title: Text('Score: $_score'),
-            )
-          ],
-        ));
+      appBar: AppBar(title: Text(widget.title)),
+      body: Column(
+        children: [
+          widget.createGame(_setScore),
+          ListTile(title: Text('Score: $_score')),
+        ],
+      ),
+    );
   }
 }

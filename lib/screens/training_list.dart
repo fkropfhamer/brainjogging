@@ -14,38 +14,44 @@ class TrainingList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text("Training")),
-        body: Column(
-          children: [
-            TrainingCard(
-                text: "Calculate",
-                target: Training<Calculate>(
-                  title: "Calculate",
-                  createGame: (Function(int) setScore) =>
-                      Calculate(setScore: setScore),
-                ),
-                color: Colors.deepOrange),
-            TrainingCard(
-                text: "Timing",
-                target: Training<Timing>(
-                  title: "Timing",
-                  createGame: (Function(int) setScore) =>
-                      Timing(setScore: setScore),
-                ),
-                color: Colors.greenAccent),
-            TrainingCard(
-                text: "Stroop",
-                target: const Stroop(),
-                color: Colors.yellowAccent),
-            TrainingCard(
-                text: "Remember",
-                target: const Remember(),
-                color: Colors.pinkAccent),
-            TrainingCard(
-                text: "Shapes",
-                target: const Shapes(),
-                color: Colors.purpleAccent),
-          ],
-        ));
+      appBar: AppBar(title: const Text("Training")),
+      body: Column(
+        children: [
+          TrainingCard(
+            text: "Calculate",
+            target: Training<Calculate>(
+              title: "Calculate",
+              createGame: (Function(int) setScore) =>
+                  Calculate(setScore: setScore),
+            ),
+            color: Colors.deepOrange,
+          ),
+          TrainingCard(
+            text: "Timing",
+            target: Training<Timing>(
+              title: "Timing",
+              createGame: (Function(int) setScore) =>
+                  Timing(setScore: setScore),
+            ),
+            color: Colors.greenAccent,
+          ),
+          TrainingCard(
+            text: "Stroop",
+            target: const Stroop(),
+            color: Colors.yellowAccent,
+          ),
+          TrainingCard(
+            text: "Remember",
+            target: const Remember(),
+            color: Colors.pinkAccent,
+          ),
+          TrainingCard(
+            text: "Shapes",
+            target: const Shapes(),
+            color: Colors.purpleAccent,
+          ),
+        ],
+      ),
+    );
   }
 }

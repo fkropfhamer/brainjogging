@@ -74,27 +74,29 @@ class StroopState extends State<Stroop> {
     }
 
     return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: buttons);
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: buttons,
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Stroop"),
-      ),
+      appBar: AppBar(title: const Text("Stroop")),
       body: Column(
         children: [
           Center(
-              child: Text(_colorText,
-                  style: TextStyle(fontSize: 100, color: _color))),
+            child: Text(
+              _colorText,
+              style: TextStyle(fontSize: 100, color: _color),
+            ),
+          ),
           _generateButtonRow(0),
           _generateButtonRow(1),
           _generateButtonRow(2),
           Center(
-              child:
-                  Text('Score: $_score', style: const TextStyle(fontSize: 30))),
+            child: Text('Score: $_score', style: const TextStyle(fontSize: 30)),
+          ),
         ],
       ),
     );

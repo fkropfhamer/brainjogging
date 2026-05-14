@@ -2,8 +2,12 @@ import 'package:brainjogging/widgets/games/game_widget.dart';
 import 'package:flutter/material.dart';
 
 class Tap extends GameWidget {
-  Tap({super.key, required super.setScore, required Function() super.finished, numTasks})
-      : super(numTasks: numTasks);
+  Tap({
+    super.key,
+    required super.setScore,
+    required Function() super.finished,
+    numTasks,
+  }) : super(numTasks: numTasks);
 
   @override
   State<Tap> createState() => _TapState();
@@ -28,13 +32,12 @@ class _TapState extends State<Tap> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Column(children: [
-        Text("Tap"),
-        TextButton(
-          onPressed: tap,
-          child: Text("$_score"),
-        )
-      ]),
+      child: Column(
+        children: [
+          Text("Tap"),
+          TextButton(onPressed: tap, child: Text("$_score")),
+        ],
+      ),
     );
   }
 }

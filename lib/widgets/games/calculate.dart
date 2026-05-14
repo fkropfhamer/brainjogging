@@ -7,8 +7,7 @@ import 'package:flutter/material.dart';
 import '../../util.dart';
 
 class Calculate extends GameWidget {
-  Calculate(
-      {super.key, required super.setScore, super.finished});
+  Calculate({super.key, required super.setScore, super.finished});
 
   @override
   _CalculateState createState() => _CalculateState();
@@ -141,18 +140,24 @@ class _CalculateState extends State<Calculate> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        ListTile(
-          title: Text(
-            _task,
-            style: const TextStyle(fontSize: 30),
+        ListTile(title: Text(_task, style: const TextStyle(fontSize: 30))),
+        Container(
+          color: _getColor(),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [Text(_input)],
           ),
         ),
-        Container(color: _getColor(), child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [Text(_input)],),),
-        NumberKeyboard(onChange: (number) { setState(() {
-          _input = number;
-        });}, onSubmit: (number) {
-          _checkInput();
-        },)
+        NumberKeyboard(
+          onChange: (number) {
+            setState(() {
+              _input = number;
+            });
+          },
+          onSubmit: (number) {
+            _checkInput();
+          },
+        ),
       ],
     );
   }

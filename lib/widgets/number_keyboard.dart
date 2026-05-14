@@ -43,8 +43,7 @@ class _NumberKeyboardState extends State<NumberKeyboard> {
 
   @override
   Widget build(BuildContext context) {
-    return
-      GridView.count(
+    return GridView.count(
       crossAxisCount: 3,
       shrinkWrap: true,
       children: [
@@ -57,15 +56,30 @@ class _NumberKeyboardState extends State<NumberKeyboard> {
         NumberButton(setNumber: addNumber, number: 7),
         NumberButton(setNumber: addNumber, number: 8),
         NumberButton(setNumber: addNumber, number: 9),
-        ElevatedButton(onPressed: () { remove(); }, child: const Text("back")),
+        ElevatedButton(
+          onPressed: () {
+            remove();
+          },
+          child: const Text("back"),
+        ),
         NumberButton(setNumber: addNumber, number: 0),
-        ElevatedButton(onPressed: () { submit(); }, child: const Text("submit"))
-    ]);
+        ElevatedButton(
+          onPressed: () {
+            submit();
+          },
+          child: const Text("submit"),
+        ),
+      ],
+    );
   }
 }
 
 class NumberButton extends StatelessWidget {
-  const NumberButton({super.key, required this.number, required this.setNumber});
+  const NumberButton({
+    super.key,
+    required this.number,
+    required this.setNumber,
+  });
 
   final int number;
   final Function(int number) setNumber;
@@ -74,8 +88,12 @@ class NumberButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(5),
-      child: ElevatedButton(onPressed: () { setNumber(number); }, child: Text("$number")),
+      child: ElevatedButton(
+        onPressed: () {
+          setNumber(number);
+        },
+        child: Text("$number"),
+      ),
     );
   }
 }
-

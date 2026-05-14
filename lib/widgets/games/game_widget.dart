@@ -1,7 +1,12 @@
 import 'package:flutter/widgets.dart';
 
 abstract class GameWidget extends StatefulWidget {
-  GameWidget({super.key, required this.setScore, Function()? finished, this.numTasks}) {
+  GameWidget({
+    super.key,
+    required this.setScore,
+    Function()? finished,
+    this.numTasks,
+  }) {
     this.finished = finished ?? (() {});
   }
 

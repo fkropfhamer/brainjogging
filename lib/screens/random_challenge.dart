@@ -6,8 +6,9 @@ class RandomChallenge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text("Random Challenge")),
-        // TODO
-        body: const Text("Coming soon!"));
+      appBar: AppBar(title: const Text("Random Challenge")),
+      // TODO
+      body: const Text("Coming soon!"),
+    );
   }
 }

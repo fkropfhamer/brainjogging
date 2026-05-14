@@ -20,7 +20,7 @@ class _TimeChallengeState extends State<TimeChallenge> {
   final _stopwatch = Stopwatch();
   late final _games = [
     Stroop(setScore: _setScore, finished: _next),
-    Tap(setScore: _setScore, finished: _next, numTasks: tasksPerGame)
+    Tap(setScore: _setScore, finished: _next, numTasks: tasksPerGame),
   ];
 
   void _start() {
@@ -71,41 +71,36 @@ class _TimeChallengeState extends State<TimeChallenge> {
   Widget build(BuildContext context) {
     if (isFinished) {
       return Scaffold(
-          appBar: AppBar(title: const Text("Result")),
-          body: ListView(
-            children: [
-              Text("Result $time"),
-              ElevatedButton(
-                  onPressed: () {
-                    _stop();
-                  },
-                  child: const Text("Exit"))
-            ],
-          ));
+        appBar: AppBar(title: const Text("Result")),
+        body: ListView(
+          children: [
+            Text("Result $time"),
+            ElevatedButton(
+              onPressed: () {
+                _stop();
+              },
+              child: const Text("Exit"),
+            ),
+          ],
+        ),
+      );
     }
 
     if (isStarted) {
       return Container(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          _getGame(cIndex),
-          ElevatedButton(
-            onPressed: _stop,
-            child: const Text("Stop"),
-          ),
-          ElevatedButton(
-            onPressed: _next,
-            child: const Text("next"),
-          ),
-        ],
-      ));
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            _getGame(cIndex),
+            ElevatedButton(onPressed: _stop, child: const Text("Stop")),
+            ElevatedButton(onPressed: _next, child: const Text("next")),
+          ],
+        ),
+      );
     }
 
-    return StatsWidget(
-      onStart: _start,
-    );
+    return StatsWidget(onStart: _start);
   }
 }
 
@@ -124,16 +119,18 @@ class _StatsWidgetState extends State<StatsWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text("Time Challenge")),
-        body: ListView(
-          children: [
-            Text("Highscore: $highScore"),
-            ElevatedButton(
-                onPressed: () {
-                  widget.onStart();
-                },
-                child: const Text("Start"))
-          ],
-        ));
+      appBar: AppBar(title: const Text("Time Challenge")),
+      body: ListView(
+        children: [
+          Text("Highscore: $highScore"),
+          ElevatedButton(
+            onPressed: () {
+              widget.onStart();
+            },
+            child: const Text("Start"),
+          ),
+        ],
+      ),
+    );
   }
 }

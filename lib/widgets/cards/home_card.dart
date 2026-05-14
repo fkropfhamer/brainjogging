@@ -9,18 +9,23 @@ class HomeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-        child: Card(
-      child: InkWell(
+      child: Card(
+        child: InkWell(
           splashColor: Colors.blue.withAlpha(40),
-          onTap: () => Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => target)),
+          onTap: () => Navigator.of(
+            context,
+          ).push(MaterialPageRoute(builder: (context) => target)),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(text,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25))
+              Text(
+                text,
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+              ),
             ],
-          )),
-    ));
+          ),
+        ),
+      ),
+    );
   }
 }

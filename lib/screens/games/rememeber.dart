@@ -13,10 +13,10 @@ const fadeDurationMs = 500;
 const visibleDurationMs = 200;
 const pauseDurationMs = 100;
 const fadeDuration = Duration(milliseconds: fadeDurationMs);
-const visibleDuration =
-    Duration(milliseconds: fadeDurationMs + visibleDurationMs);
-const pauseDuration =
-    Duration(milliseconds: fadeDurationMs + pauseDurationMs);
+const visibleDuration = Duration(
+  milliseconds: fadeDurationMs + visibleDurationMs,
+);
+const pauseDuration = Duration(milliseconds: fadeDurationMs + pauseDurationMs);
 
 var random = Random();
 
@@ -48,7 +48,9 @@ class RememberState extends State<Remember> {
     _isRunning = true;
     var seq = _generateSequence();
     _seqString = seq.fold<String>(
-        "", (previousValue, element) => previousValue + element.toString());
+      "",
+      (previousValue, element) => previousValue + element.toString(),
+    );
 
     for (var i = 0; i < seq.length; i++) {
       setState(() {
@@ -119,19 +121,14 @@ class RememberState extends State<Remember> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Remember"),
-      ),
+      appBar: AppBar(title: const Text("Remember")),
       body: Column(
         children: [
           AnimatedOpacity(
             duration: const Duration(milliseconds: fadeDurationMs),
             opacity: _visible ? 1.0 : 0.0,
             child: Center(
-              child: Text(
-                _number.toString(),
-                style: TextStyle(fontSize: 100),
-              ),
+              child: Text(_number.toString(), style: TextStyle(fontSize: 100)),
             ),
           ),
           if (!_isRunning && !_isWaitingForInput)

@@ -13,7 +13,7 @@ class _ShapesState extends State<Shapes> {
     Circle(50, 50, Colors.black),
     Rectangle(100, 100, Colors.greenAccent),
     Rectangle(100, 50, Colors.lightBlueAccent),
-    Circle(200, 0, Colors.deepOrange)
+    Circle(200, 0, Colors.deepOrange),
   ];
 
   @override
@@ -21,18 +21,19 @@ class _ShapesState extends State<Shapes> {
     return Scaffold(
       appBar: AppBar(title: const Text("Shapes")),
       body: Center(
-          child: CustomPaint(
-            size: Size(500, 500),
-            painter: ShapesPainter(shapes),
-            child: ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    shapes = [Circle(0, 0, Colors.green)];
-                  });
-                },
-                child: const Text("test")),
+        child: CustomPaint(
+          size: Size(500, 500),
+          painter: ShapesPainter(shapes),
+          child: ElevatedButton(
+            onPressed: () {
+              setState(() {
+                shapes = [Circle(0, 0, Colors.green)];
+              });
+            },
+            child: const Text("test"),
           ),
         ),
+      ),
     );
   }
 }

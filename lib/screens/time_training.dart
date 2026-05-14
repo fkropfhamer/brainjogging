@@ -6,8 +6,9 @@ class TimeTraining extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text("Time Training")),
-        // TODO
-        body: const Text("Coming soon!"));
+      appBar: AppBar(title: const Text("Time Training")),
+      // TODO
+      body: const Text("Coming soon!"),
+    );
   }
 }
